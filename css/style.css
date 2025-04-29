@@ -660,7 +660,7 @@
     transform: scale(1.05);
 }
 
-.lightbox {
+.lightboxabout {
     display: none;
     position: fixed;
     z-index: 9998;
@@ -671,7 +671,7 @@
     align-items: center;
 }
 
-.lightbox.active {
+.lightboxabout.active {
     display: flex;
 }
 
@@ -679,13 +679,13 @@
     position: relative;
 }
 
-.lightbox img {
+.lightboxabout img {
     max-width: 90%;
     max-height: 100vh;
     box-shadow: 0 0 20px rgba(24, 24, 24, 0.812);
 }
 
-.close-btn {
+.close-btn1 {
     position: absolute;
     top: -40px;
     right: 0;
@@ -699,7 +699,7 @@
     cursor: pointer;
     z-index: 9999;
 }
-.close-btn:hover {
+.close-btn1:hover {
     color: #ff00e1;
 }
 
