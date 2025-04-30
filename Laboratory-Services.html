@@ -60,7 +60,7 @@
                 </div>
                 <nav class="breadcrumb mb-0" style="margin-inline: 5px;">
                     
-                    <a href="#" 
+                    <a href="index.html#quote-request" 
                     class="btn btn-primary py-3 px-5 animated slideInRight" style="padding: 8px !important; font-size: 14px; border-radius: 10px; background-color: rgb(22, 89, 170); border: 0px;">Get a Quote</a> <br> 
                     <nav class="breadcrumb mb-0" style="margin-inline: 5px;">
                     
@@ -238,55 +238,50 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <h2 class="mb-4">Request for a Quote</h2>
                     
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="mobile" placeholder="Your Mobile">
-                                <label for="mobile">Company Name</label>
-                            </div>
+                    <form action="quote-request.php" method="POST">
+                        <div class="row g-3">
+                          <div class="col-sm-6">
+                            <label for="company" class="form-label">Company Name</label>
+                            <input type="text" class="form-control" id="company" name="company" required>
+                          </div>
+                      
+                          <div class="col-sm-6">
+                            <label for="representative" class="form-label">Representative's Name</label>
+                            <input type="text" class="form-control" id="representative" name="representative" required>
+                          </div>
+                      
+                          <div class="col-sm-6">
+                            <label for="email" class="form-label">Official Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                          </div>
+                      
+                          <div class="col-sm-6">
+                            <label for="phone" class="form-label">Phone/Mobile Number</label>
+                            <input type="text" class="form-control" id="phone" name="phone" required>
+                          </div>
+                      
+                          <div class="col-sm-6">
+                            <label for="service" class="form-label">Choose A Service</label>
+                            <select class="form-select" id="service" name="service" required>
+                              <option selected disabled value="">Select a Service</option>
+                              <option value="Support" style="color: black !important;">Support</option>
+                              <option value="Quote" style="color: black !important;">Quote</option>
+                              <option value="Inquiry" style="color: black !important;">Inquiry</option>
+                              <option value="Lab Service" style="color: black !important;">Lab Service</option>
+                              <option value="Lab Service" style="color: black !important;">Other</option>
+                            </select>
+                          </div>
+                      
+                          <div class="col-12">
+                            <label for="message" class="form-label">Additional Information</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                          </div>
+                      
+                          <div class="col-12 text-center">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Request Quote</button>
+                          </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                <label for="name">Company Representative's Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="mail" placeholder="Your Email">
-                                <label for="mail">Official Email</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="mobile" placeholder="Your Mobile">
-                                <label for="mobile">Phone/Mobile Number</label>
-                            </div>
-                        </div>
-                        
-                        <div class="col-sm-6">
-                            <div class="form-floating">
-                                <select class="form-select" id="service">
-                                    <option selected>Support</option>
-                                    <option value="">Quote</option>
-                                    <option value="">Inquiry</option>
-                                    <option value="">Lab Service</option>
-                                    <option value="">Training Courses</option>
-                                </select>
-                                <label for="service">Choose A Service</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a message here" id="message"
-                                    style="height: 130px"></textarea>
-                                <label for="message">Message</label>
-                            </div>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Submit Now</button>
-                        </div>
-                    </div>
+                      </form>
                 </div>
             </div>
         </div>
