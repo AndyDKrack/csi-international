@@ -183,4 +183,18 @@
   .blog-card .read-more a:hover {
     text-decoration: underline;
   }
+
+  .blog-hero {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .blog-hero img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
+    display: block;
+  }
   
