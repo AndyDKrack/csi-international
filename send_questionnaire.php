@@ -15,9 +15,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $satisfaction = htmlspecialchars(trim($_POST['satisfaction']));
     $recommendation = htmlspecialchars(trim($_POST['recommendation']));
     $other_information = htmlspecialchars(trim($_POST['other_information']));
+    $recaptcha_response = $_POST['g-recaptcha-response'];
+
+    // reCAPTCHA
+    $secret_key = "6LdGyjErAAAAAFVpH5xDbUHNUhbJxfBgnkU9GDUx"; // Secret Key
+    $verify_url = "https://www.google.com/recaptcha/api/siteverify";
+    $response = file_get_contents($verify_url . "?secret=" . $secret_key . "&response=" . $recaptcha_response);
+    $response_data = json_decode($response);
+
+    if (!$response_data->success) {
+        echo "<script>alert('reCAPTCHA verification failed. Please try again.'); window.location.href='questionnaire.html';</script>";
+        exit;
+    }
 
     // CSI Company Email
-    $company_email = "yourcompanyemail@yourdomain.com";
+    $company_email = "support@csiinternational.co.ke"; 
 
     // Subject for CSI Team
     $subject_to_company = "New Questionnaire Submission from $person_name";
@@ -47,9 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     mail($company_email, $subject_to_company, $message_to_company, $headers_company);
 
-
     // Send Thank You email to the person
-    $subject_to_client = "Thank you for submitting the CSI Questionnaire";
+    $subject_to_client = "Thank you for submitting the CSI Questionnaire.";
 
     $message_to_client = "
     <h2>Thank you, {$person_name}!</h2>
@@ -66,9 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     mail($email, $subject_to_client, $message_to_client, $headers_client);
 
-
     // After sending, redirect to a Thank You page
-    header("Location: thankyou.html");
+    header("Location: Thank-You.html");
     exit;
 } else {
     // Redirect to home if accessed directly

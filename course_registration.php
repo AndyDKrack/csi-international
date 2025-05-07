@@ -1,35 +1,49 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // form data
     $first_name = htmlspecialchars($_POST['first_name']);
     $second_name = htmlspecialchars($_POST['second_name']);
     $phone = htmlspecialchars($_POST['phone']);
     $email = htmlspecialchars($_POST['email']);
     $course = htmlspecialchars($_POST['course']);
+    $recaptcha_response = $_POST['g-recaptcha-response'];
 
     $full_name = $first_name . ' ' . $second_name;
 
-    // Email details
-    $company_email = "info@yourcompany.com"; // <-- Replace with your real email
+    // reCAPTCHA
+    $secret_key = "6LdGyjErAAAAAFVpH5xDbUHNUhbJxfBgnkU9GDUx"; // Secret Key
+    $verify_url = "https://www.google.com/recaptcha/api/siteverify";
+    $response = file_get_contents($verify_url . "?secret=" . $secret_key . "&response=" . $recaptcha_response);
+    $response_data = json_decode($response);
+
+    if (!$response_data->success) {
+        echo "<script>alert('reCAPTCHA verification failed. Please try again.'); window.location.href='course_registration.html';</script>";
+        exit;
+    }
+
+    // Email to the company
+    $company_email = "support@csiinternational.co.ke"; 
     $subject_to_company = "New Course Registration: $course";
-    $subject_to_user = "Thank you for registering";
-
     $message_to_company = "New registration details:\n\n" .
-                           "Full Name: $full_name\n" .
-                           "Phone Number: $phone\n" .
-                           "Email: $email\n" .
-                           "Course: $course\n";
+                          "Full Name: $full_name\n" .
+                          "Phone Number: $phone\n" .
+                          "Email: $email\n" .
+                          "Course: $course\n";
 
+    // Email to the student
+    $subject_to_user = "Thank you for registering for the course";
     $message_to_user = "Dear $full_name,\n\n" .
                        "Thank you for registering for the course: $course.\n\n" .
-                       "We will contact you soon regarding payment and the course start date.\n\n" .
+                       "Our team will contact you soon via email or phone regarding payment and the course start date.\n\n" .
                        "Best Regards,\n" .
-                       "CSI International";
+                       "CSI International Team";
 
-    $headers = "From: $company_email";
+    $headers_company = "From: $company_email";
+    $headers_user = "From: $company_email";
 
     // Send emails
-    $company_mail_sent = mail($company_email, $subject_to_company, $message_to_company, $headers);
-    $user_mail_sent = mail($email, $subject_to_user, $message_to_user, $headers);
+    $company_mail_sent = mail($company_email, $subject_to_company, $message_to_company, $headers_company);
+    $user_mail_sent = mail($email, $subject_to_user, $message_to_user, $headers_user);
 
     // Feedback
     if ($company_mail_sent && $user_mail_sent) {

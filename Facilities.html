@@ -295,48 +295,56 @@
                     
                     <form action="quote-request.php" method="POST">
                         <div class="row g-3">
-                          <div class="col-sm-6">
-                            <label for="company" class="form-label">Company Name</label>
-                            <input type="text" class="form-control" id="company" name="company" required>
-                          </div>
-                      
-                          <div class="col-sm-6">
-                            <label for="representative" class="form-label">Representative's Name</label>
-                            <input type="text" class="form-control" id="representative" name="representative" required>
-                          </div>
-                      
-                          <div class="col-sm-6">
-                            <label for="email" class="form-label">Official Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                          </div>
-                      
-                          <div class="col-sm-6">
-                            <label for="phone" class="form-label">Phone/Mobile Number</label>
-                            <input type="text" class="form-control" id="phone" name="phone" required>
-                          </div>
-                      
-                          <div class="col-sm-6">
-                            <label for="service" class="form-label">Choose A Service</label>
-                            <select class="form-select" id="service" name="service" required>
-                              <option selected disabled value="">Select a Service</option>
-                              <option value="Support" style="color: black !important;">Support</option>
-                              <option value="Quote" style="color: black !important;">Quote</option>
-                              <option value="Inquiry" style="color: black !important;">Inquiry</option>
-                              <option value="Lab Service" style="color: black !important;">Lab Service</option>
-                              <option value="Lab Service" style="color: black !important;">Other</option>
-                            </select>
-                          </div>
-                      
-                          <div class="col-12">
-                            <label for="message" class="form-label">Additional Information</label>
-                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                          </div>
-                      
-                          <div class="col-12 text-center">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Request Quote</button>
-                          </div>
+                            <div class="col-sm-6">
+                                <label for="company" class="form-label">Company Name</label>
+                                <input type="text" class="form-control" id="company" name="company" required>
+                            </div>
+                    
+                            <div class="col-sm-6">
+                                <label for="representative" class="form-label">Representative's Name</label>
+                                <input type="text" class="form-control" id="representative" name="representative" required>
+                            </div>
+                    
+                            <div class="col-sm-6">
+                                <label for="email" class="form-label">Official Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                    
+                            <div class="col-sm-6">
+                                <label for="phone" class="form-label">Phone/Mobile Number</label>
+                                <input type="text" class="form-control" id="phone" name="phone" required>
+                            </div>
+                    
+                            <div class="col-sm-6">
+                                <label for="service" class="form-label">Choose A Service</label>
+                                <select class="form-select" id="service" name="service" required>
+                                    <option selected disabled value="">Select a Service</option>
+                                    <option value="Support" style="color: black !important;">Support</option>
+                                    <option value="Quote" style="color: black !important;">Quote</option>
+                                    <option value="Inquiry" style="color: black !important;">Inquiry</option>
+                                    <option value="Lab Service" style="color: black !important;">Lab Service</option>
+                                    <option value="Other" style="color: black !important;">Other</option>
+                                </select>
+                            </div>
+                    
+                            <div class="col-12">
+                                <label for="message" class="form-label">Additional Information</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            </div>
+                    
+                            <!-- Add reCAPTCHA widget -->
+                            <div class="col-12">
+                                <div class="g-recaptcha" data-sitekey="6LdGyjErAAAAAHDZI6WAE7CGSqMd5ulu05pdhPgu"></div>
+                            </div>
+                    
+                            <div class="col-12 text-center">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Request Quote</button>
+                            </div>
                         </div>
-                      </form>
+                    </form>
+                    
+                    <!-- Add the reCAPTCHA script -->
+                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
                 </div>
             </div>
         </div>

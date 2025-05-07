@@ -205,90 +205,93 @@
     <!-- questionnaire start-->
     <h2>CSI Customer Satisfaction Questionnaire</h2>
 
-    <form id="questionnaire-form" action="submit.php" method="POST">
-    <label>Company Name</label>
-    <input type="text" name="company_name" required>
-
-    <label>Your Name</label>
-    <input type="text" name="person_name" required>
-
-    <label>Email</label>
-    <input type="email" name="email" required>
-
-    <label>Phone Number</label>
-    <input type="text" name="phone" required>
-
-    <label>Job Position</label>
-    <input type="text" name="position" required>
-
-    <label>What service did we offer you in the past 12 months?</label>
-    <textarea name="service_offered" rows="3" required></textarea>
-
-    <label>Rate our service (1-5 Stars)</label>
-    <div class="stars" id="star-rating">
-        <span class="star" data-value="1">&#9733;</span>
-        <span class="star" data-value="2">&#9733;</span>
-        <span class="star" data-value="3">&#9733;</span>
-        <span class="star" data-value="4">&#9733;</span>
-        <span class="star" data-value="5">&#9733;</span>
-    </div>
-    <input type="hidden" name="rating" id="rating" value="">
-
-    <label>Office Visit Experience</label>
-    <select name="office_visit_experience" required>
-        <option value="">Select</option>
-        <option value="Worst">Worst</option>
-        <option value="Bad">Bad</option>
-        <option value="Average">Average</option>
-        <option value="Good">Good</option>
-        <option value="Excellent">Excellent</option>
-        <option value="Never visited the office">Never visited the office</option>
-    </select>
-
-    <label>Phone Call Customer Care</label>
-    <select name="phone_call_care" required>
-        <option value="">Select</option>
-        <option value="Worst">Worst</option>
-        <option value="Bad">Bad</option>
-        <option value="Average">Average</option>
-        <option value="Good">Good</option>
-        <option value="Excellent">Excellent</option>
-    </select>
-
-    <label>How was the service delivery?</label>
-    <select name="service_delivery" required>
-        <option value="">Select</option>
-        <option value="Worst">Worst</option>
-        <option value="Bad">Bad</option>
-        <option value="Average">Average</option>
-        <option value="Good">Good</option>
-        <option value="Excellent">Excellent</option>
-    </select>
-
-    <label>Are you satisfied with our service?</label>
-    <select name="satisfaction" required>
-        <option value="">Select</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-        <option value="Somehow">Somehow</option>
-    </select>
-
-    <label>Would you recommend us?</label>
-    <select name="recommendation" required>
-        <option value="">Select</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-    </select>
-
-    <label>Any other information</label>
-    <textarea name="other_information" rows="4"></textarea>
-
-    <button type="submit">Submit</button>
-
-    <div class="socials">
-        <p>Follow us on social media!</p>
-    </div>
+    <form id="questionnaire-form" action="send_questionnaire.php" method="POST">
+        <!-- Your existing form fields -->
+        <label>Company Name</label>
+        <input type="text" name="company_name" required>
+    
+        <label>Your Name</label>
+        <input type="text" name="person_name" required>
+    
+        <label>Email</label>
+        <input type="email" name="email" required>
+    
+        <label>Phone Number</label>
+        <input type="text" name="phone" required>
+    
+        <label>Job Position</label>
+        <input type="text" name="position" required>
+    
+        <label>What service did we offer you in the past 12 months?</label>
+        <textarea name="service_offered" rows="3" required></textarea>
+    
+        <label>Rate our service (1-5 Stars)</label>
+        <div class="stars" id="star-rating">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        <input type="hidden" name="rating" id="rating" value="">
+    
+        <label>Office Visit Experience</label>
+        <select name="office_visit_experience" required>
+            <option value="">Select</option>
+            <option value="Worst">Worst</option>
+            <option value="Bad">Bad</option>
+            <option value="Average">Average</option>
+            <option value="Good">Good</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Never visited the office">Never visited the office</option>
+        </select>
+    
+        <label>Phone Call Customer Care</label>
+        <select name="phone_call_care" required>
+            <option value="">Select</option>
+            <option value="Worst">Worst</option>
+            <option value="Bad">Bad</option>
+            <option value="Average">Average</option>
+            <option value="Good">Good</option>
+            <option value="Excellent">Excellent</option>
+        </select>
+    
+        <label>How was the service delivery?</label>
+        <select name="service_delivery" required>
+            <option value="">Select</option>
+            <option value="Worst">Worst</option>
+            <option value="Bad">Bad</option>
+            <option value="Average">Average</option>
+            <option value="Good">Good</option>
+            <option value="Excellent">Excellent</option>
+        </select>
+    
+        <label>Are you satisfied with our service?</label>
+        <select name="satisfaction" required>
+            <option value="">Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Somehow">Somehow</option>
+        </select>
+    
+        <label>Would you recommend us?</label>
+        <select name="recommendation" required>
+            <option value="">Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+    
+        <label>Any other information</label>
+        <textarea name="other_information" rows="4"></textarea>
+    
+        <!-- Add reCAPTCHA widget -->
+        <div class="g-recaptcha" data-sitekey="6LdGyjErAAAAAHDZI6WAE7CGSqMd5ulu05pdhPgu"></div>
+    
+        <button type="submit">Submit</button>
     </form>
+    
+    <!-- Add the reCAPTCHA script -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script>
     const stars = document.querySelectorAll('.star');
