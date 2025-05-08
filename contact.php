@@ -7,17 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = htmlspecialchars($_POST['message']);
     $recaptcha_response = $_POST['g-recaptcha-response'];
 
-    // reCAPTCHA
-    $secret_key = "6LdGyjErAAAAAFVpH5xDbUHNUhbJxfBgnkU9GDUx"; // Secret Key
-    $verify_url = "https://www.google.com/recaptcha/api/siteverify";
-    $response = file_get_contents($verify_url . "?secret=" . $secret_key . "&response=" . $recaptcha_response);
-    $response_data = json_decode($response);
-
-    if (!$response_data->success) {
-        echo "<script>alert('reCAPTCHA verification failed. Please try again.'); window.location.href='contact.html';</script>";
-        exit;
-    }
-
     // Email to the company
     $to_company = "support@csiinternational.co.ke"; 
     $headers_company = "From: $email";

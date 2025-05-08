@@ -10,17 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $full_name = $first_name . ' ' . $second_name;
 
-    // reCAPTCHA
-    $secret_key = "6LdGyjErAAAAAFVpH5xDbUHNUhbJxfBgnkU9GDUx"; // Secret Key
-    $verify_url = "https://www.google.com/recaptcha/api/siteverify";
-    $response = file_get_contents($verify_url . "?secret=" . $secret_key . "&response=" . $recaptcha_response);
-    $response_data = json_decode($response);
-
-    if (!$response_data->success) {
-        echo "<script>alert('reCAPTCHA verification failed. Please try again.'); window.location.href='course_registration.html';</script>";
-        exit;
-    }
-
     // Email to the company
     $company_email = "support@csiinternational.co.ke"; 
     $subject_to_company = "New Course Registration: $course";
